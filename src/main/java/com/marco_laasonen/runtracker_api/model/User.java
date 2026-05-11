@@ -1,5 +1,6 @@
 package com.marco_laasonen.runtracker_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.marco_laasonen.runtracker_api.model.Activity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -43,6 +44,7 @@ public class User {
     @Column(name = "created_at", updatable = false)
     private Instant createdAt;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Activity> activities;
 }
